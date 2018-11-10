@@ -1,7 +1,7 @@
 import pickle
 from sklearn import tree
 
-with open('DataSet-Release 1/ds1/ds1Train.csv', 'r') as myFile:
+with open('../DataSet-Release 1/ds1/ds1Train.csv', 'r') as myFile:
     ds1Train = [line.split(',') for line in myFile.read().split('\n')]#[1:]#Remove header, but training set does not have header
 
 ds1Train.pop()
@@ -19,6 +19,7 @@ dTclassifier = tree.DecisionTreeClassifier(criterion='entropy')
 dTclassifier.fit(featuresds1T, labelsds1T)
 
 #Export trained model
-with open('decition_tree/decision_tree_model.pkl', 'wb') as myFile:
-    pickle.dump(dTclassifier, myFile)
+#Disabling for now to not retrain model
+#with open('decision_tree_model_ds1.pkl', 'wb') as myFile:
+#    pickle.dump(dTclassifier, myFile)
 

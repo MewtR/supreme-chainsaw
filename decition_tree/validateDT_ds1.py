@@ -2,11 +2,11 @@ import pickle
 from sklearn.metrics import accuracy_score
 
 #Import trained model
-with open('decition_tree/decision_tree_model.pkl', 'rb') as myFile:
+with open('decision_tree_model_ds1.pkl', 'rb') as myFile:
     dTclassifier = pickle.load(myFile)
 
 #Validation set has class in the last column just like training set 
-with open('DataSet-Release 1/ds1/ds1Val.csv', 'r') as myFile:
+with open('../DataSet-Release 1/ds1/ds1Val.csv', 'r') as myFile:
     ds1Val = [line.split(',') for line in myFile.read().split('\n')]#[1:] #Remove header, but validation set does not have header
 ds1Val.pop()
 featuresds1V = [d[:-1] for d in ds1Val]
@@ -20,7 +20,7 @@ print (validation_predicted) #Returns ndarray
 #print (validation_predicted.__class__.__name__)
 print (labelsds1V) # Is a list
 #print (labelsds1V.__class__.__name__)
-with open('decition_tree/ds1Val-dt.csv', 'w') as myFile:
+with open('ds1Val-dt.csv', 'w') as myFile:
     for i in range (len(validation_predicted)):
         myFile.write('{},{}\n'.format(i+1, validation_predicted[i]))
 
