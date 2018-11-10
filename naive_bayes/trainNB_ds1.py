@@ -1,5 +1,5 @@
 import pickle
-from sklearn import tree
+from sklearn import naive_bayes
 
 with open('../DataSet-Release 1/ds1/ds1Train.csv', 'r') as myFile:
     ds1Train = [line.split(',') for line in myFile.read().split('\n')]#[1:]#Remove header, but training set does not have header
@@ -14,11 +14,10 @@ labelsds1T = [int(x) for x in labelsds1T] #Convert chars to int
 #print (labelsds1T)
 
 #Train using training set
-#dTclassifier = tree.DecisionTreeClassifier()
-dTclassifier = tree.DecisionTreeClassifier(criterion='entropy')
-dTclassifier.fit(featuresds1T, labelsds1T)
+nBclassifier = naive_bayes.BernoulliNB()
+nBclassifier.fit(featuresds1T, labelsds1T)
 
 #Export trained model
-with open('decision_tree_model_ds1.pkl', 'wb') as myFile:
-    pickle.dump(dTclassifier, myFile)
+with open('naive_bayes_model_ds1.pkl', 'wb') as myFile:
+    pickle.dump(nBclassifier, myFile)
 
